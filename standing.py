@@ -25,9 +25,6 @@ assert POSE.size == 12, "pose file must contain 12 joint angles"
 d = {f'{leg}_{j}': i
      for i,(leg,j) in enumerate([(l,k) for l in ('FR','FL','RR','RL') for k in range(3)])}
 
-HIND  = ('RR','RL')
-SWING = ('RR_1','RR_2','RL_1','RL_2')   # ← back legs hip-pitch & knee
-
 LOWLEVEL = 0xff
 DT       = 0.002
 udp  = sdk.UDP(LOWLEVEL, 8080, "192.168.123.10", 8007)
@@ -41,7 +38,7 @@ udp.InitCmdData(cmd)
 KNEE_AMP = KNEE_GAIN * HIP_AMP
 t0       = time.time()
 
-print("► swing_hind.py streaming – robot must be in LOW-LEVEL and hanging.")
+print("► standup_a.py running – robot must be in LOW-LEVEL and hanging.")
 
 while True:
     loop_t = time.time()
@@ -65,26 +62,9 @@ while True:
             m = cmd.motorCmd[i]
             m.q, m.dq, m.Kp, m.Kd, m.tau = POSE[i], 0.0, KPH, KDH, 0.0
 
-    # 3) swing both rear legs while holding everything else
+    # 3) execute the walking part
     else:
-        swing_t   = t - (RAMP_SEC + HOLD_SEC)
-        amp_scale = min(swing_t / SW_FADE_SEC, 1.0)
-        hip  =  amp_scale * HIP_AMP  * math.sin(ω * swing_t)
-        knee = -amp_scale * KNEE_AMP * math.sin(ω * swing_t)
-
-        for name, idx in d.items():
-            moving = name in SWING
-            q      = POSE[idx]
-            if moving:
-                if   name.endswith('_1'):  q += hip
-                elif name.endswith('_2'):  q += knee
-            kp, kd = (KPS, KDS) if moving else (KPH, KDH)
-            m = cmd.motorCmd[idx]
-            m.q, m.dq, m.Kp, m.Kd, m.tau = q, 0.0, kp, kd, 0.0
-
-    # inward roll bias on both rear hip-rolls
-    cmd.motorCmd[d['RR_0']].tau = ROLL_BIAS
-    cmd.motorCmd[d['RL_0']].tau = ROLL_BIAS
+        pass
 
     if t > 1.0:  safe.PowerProtect(cmd, state, 1)
     udp.SetSend(cmd);  udp.Send()
