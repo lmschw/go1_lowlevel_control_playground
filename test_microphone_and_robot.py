@@ -6,7 +6,9 @@ import wave
 import queue
 import time
 
-GO1_IP = '192.168.xxx.xxx'   
+import standing 
+
+GO1_IP = '192.168.123.161'   
 GO1_PORT = 8000              
 
 DEVICE_INDEX = 13            
@@ -18,17 +20,7 @@ audio_q = queue.Queue()
 
 # --- Thread 1: Connect to the Go1 robot ---
 def connect_go1():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    # s.connect((GO1_IP, GO1_PORT))
-    # print(f"[Go1] Connected to {GO1_IP}:{GO1_PORT}")
-
-    # try:
-    #     while True:
-    #         data = s.recv(1024)
-    #         print("[Go1] Received:", data)
-    # except KeyboardInterrupt:
-    #     print("[Go1] Connection closed.")
-
+    standing.execute_go1_movement_routine()
 
 # --- Thread 2: Record audio, compute dB, save to file ---
 def record_mic():
@@ -86,6 +78,7 @@ if __name__ == "__main__":
     try:
         while True:
             time.sleep(1)
+
     except KeyboardInterrupt:
         audio_q.put(None)
         print("\n[Main] Exiting.")
