@@ -147,7 +147,7 @@ def run_safe_stand(udp, cmd, state, joint_angles_target, sign_map):
                     delta_cmd = MAX_STEP * (1 if delta_cmd > 0 else -1)
                 q_cmd = prev_q_cmd[i] + delta_cmd
                 cmd.motorCmd[i].q = q_cmd
-                cmd.motorCmd[i].Kp = 16.0
+                cmd.motorCmd[i].Kp = 8.0
                 cmd.motorCmd[i].Kd = 0.9
                 prev_q_cmd[i] = q_cmd
             udp.SetSend(cmd); udp.Send()
