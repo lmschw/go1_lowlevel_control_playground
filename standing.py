@@ -67,4 +67,5 @@ def execute_go1_movement_routine():
         time.sleep(max(0.0, DT - (time.time() - loop_t)))
 
 
-execute_go1_movement_routine()
+if __name__ == "__main__":
+    execute_go1_movement_routine()

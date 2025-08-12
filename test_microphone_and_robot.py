@@ -38,6 +38,7 @@ def record_mic():
             db = 20 * np.log10(rms)
         else:
             db = -np.inf
+        db_measurements.append(db)
         print(f"[Mic] dB Level: {db:.2f} dB")
 
     print(f"[Mic] Starting recording from device {DEVICE_INDEX}...")
@@ -71,13 +72,20 @@ def save_audio():
 # START THREADS
 # ------------------------------
 if __name__ == "__main__":
-    threading.Thread(target=connect_go1, daemon=True).start()
-    threading.Thread(target=record_mic, daemon=True).start()
-    threading.Thread(target=save_audio, daemon=True).start()
+    db_measurements = []
+
+    go1_thread = threading.Thread(target=connect_go1, daemon=True)
+    mic_thread = threading.Thread(target=record_mic, daemon=True)
+    audio_recording_thread = threading.Thread(target=save_audio, daemon=True)
+    
+    go1_thread.start()
+    mic_thread.start()
+    audio_recording_thread.start()
 
     try:
         while True:
             time.sleep(1)
+            print(f"dB Level: {db_measurements[-1]:.2f} dB")
 
     except KeyboardInterrupt:
         audio_q.put(None)
