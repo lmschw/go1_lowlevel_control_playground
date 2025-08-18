@@ -1,0 +1,114 @@
+{
+  "sign_map": [
+    1,
+    1,
+    -1,
+    -1,
+    1,
+    -1,
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1
+  ],
+  "results": [
+    {
+      "joint": 0,
+      "q_init": 0.0,
+      "q_new": 0.48153382539749146,
+      "delta": 0.48153382539749146,
+      "measured_direction": 1,
+      "motor_current_or_dq": 0.009076221846044064
+    },
+    {
+      "joint": 1,
+      "q_init": 0.0,
+      "q_new": 0.08459541946649551,
+      "delta": 0.08459541946649551,
+      "measured_direction": 1,
+      "motor_current_or_dq": 0.02237682417035103
+    },
+    {
+      "joint": 2,
+      "q_init": 0.0,
+      "q_new": -0.8669869899749756,
+      "delta": -0.8669869899749756,
+      "measured_direction": -1,
+      "motor_current_or_dq": -0.00828781072050333
+    },
+    {
+      "joint": 3,
+      "q_init": 0.0,
+      "q_new": -0.5779980421066284,
+      "delta": -0.5779980421066284,
+      "measured_direction": -1,
+      "motor_current_or_dq": -0.012078878469765186
+    },
+    {
+      "joint": 4,
+      "q_init": 0.0,
+      "q_new": 0.25081905722618103,
+      "delta": 0.25081905722618103,
+      "measured_direction": 1,
+      "motor_current_or_dq": 0.07223652303218842
+    },
+    {
+      "joint": 5,
+      "q_init": 0.0,
+      "q_new": -0.8632729053497314,
+      "delta": -0.8632729053497314,
+      "measured_direction": -1,
+      "motor_current_or_dq": -0.008940254338085651
+    },
+    {
+      "joint": 6,
+      "q_init": 0.0,
+      "q_new": 0.360605388879776,
+      "delta": 0.360605388879776,
+      "measured_direction": 1,
+      "motor_current_or_dq": 0.0768115222454071
+    },
+    {
+      "joint": 7,
+      "q_init": 0.0,
+      "q_new": 0.023010922595858574,
+      "delta": 0.023010922595858574,
+      "measured_direction": 1,
+      "motor_current_or_dq": 0.004904694389551878
+    },
+    {
+      "joint": 8,
+      "q_init": 0.0,
+      "q_new": -0.8431282639503479,
+      "delta": -0.8431282639503479,
+      "measured_direction": -1,
+      "motor_current_or_dq": -0.003901352174580097
+    },
+    {
+      "joint": 9,
+      "q_init": 0.0,
+      "q_new": -0.29496368765830994,
+      "delta": -0.29496368765830994,
+      "measured_direction": -1,
+      "motor_current_or_dq": 0.012077080085873604
+    },
+    {
+      "joint": 10,
+      "q_init": 0.0,
+      "q_new": -0.008780483156442642,
+      "delta": -0.008780483156442642,
+      "measured_direction": -1,
+      "motor_current_or_dq": -0.008524789474904537
+    },
+    {
+      "joint": 11,
+      "q_init": 0.0,
+      "q_new": -0.8667851090431213,
+      "delta": -0.8667851090431213,
+      "measured_direction": -1,
+      "motor_current_or_dq": -0.009199789725244045
+    }
+  ]
+}

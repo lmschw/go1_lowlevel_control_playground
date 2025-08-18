@@ -39,7 +39,7 @@ def record_mic():
         else:
             db = -np.inf
         db_measurements.append(db)
-        print(f"[Mic] dB Level: {db:.2f} dB")
+        #print(f"[Mic] dB Level: {db:.2f} dB")
 
     print(f"[Mic] Starting recording from device {DEVICE_INDEX}...")
     with sd.InputStream(device=DEVICE_INDEX,
